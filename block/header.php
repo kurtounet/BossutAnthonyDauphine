@@ -1,5 +1,7 @@
 <?php
-session_start();
+//session_start();
+$localhost = "https://localhost/bossutanthonydauphine/";
+$title = "Dauphine";
 ?>
 <!DOCTYPE html>
 <html lang="fr">

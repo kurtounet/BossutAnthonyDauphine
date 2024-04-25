@@ -1,10 +1,10 @@
 <?php
 require_once ("../utils/databaseManager.php");
-$title = "Pokedex";
+$title = "Admin";
 include_once ("../block/header.php");
 
 if (isset($_SESSION["username"]) === false) {
-    header("Location: https://localhost/pokedex-gaetan/login.php");
+    header("Location: https://localhost/bossutanthonydauphine/login.php");
 }
 
 $pdo = connectDB();

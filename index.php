@@ -2,16 +2,18 @@
 require_once ("utils/databaseManager.php");
 $title = "Dauphine";
 include_once ("block/header.php");
-var_dump($_SESSION);
-session_destroy();
+
+
+
+
 
 $pdo = connectDB();
 
 $annonces = findAllAnnonce($pdo);
 /*
-$passHash = password_hash("admin", PASSWORD_DEFAULT);
+$passHash = password_hash("jose123", PASSWORD_DEFAULT);
 echo ($passHash);
-var_dump(password_verify("admin", $passHash));
+var_dump(password_verify("jose123", $passHash));
 */
 ?>
 
