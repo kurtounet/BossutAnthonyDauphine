@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -21,3 +20,6 @@ session_start();
 </head>
 
 <body>
+      <?php
+      include_once (__DIR__ . "/navbar.php");
+      ?>

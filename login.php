@@ -1,57 +1,48 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
-include_once ("./block/header.php");
-require_once ("utils/databaseManager.php");
 $title = "Login";
+require_once ("utils/databaseManager.php");
+include_once ("block/header.php");
+var_dump($_SESSION);
+
 
 $errors = [];
-//session_destroy();//..
-// est ce que j'ai validé le form
-var_dump($_SERVER["REQUEST_METHOD"]);
-
+//var_dump($_SERVER["REQUEST_METHOD"]);
 //var_dump($_POST["username"], $_POST["password"]);
+// est ce que j'ai validé le form
 if (
     $_SERVER["REQUEST_METHOD"] === "POST" &&
     isset($_POST["username"], $_POST["password"])
 ) {
-    //Validation des données
-
-    //Verifier si les identifiants
     $pdo = connectDB();
-    var_dump($pdo);
-    // Recuperer User avec les memes identifiants
-    $response = $pdo->prepare("SELECT username, password FROM utilisateur WHERE username = :username AND password = :password");
-    $response->execute([
+    $query = $pdo->prepare("SELECT username, password FROM utilisateur WHERE username = :username AND password = :password");
+    $query->execute([
         ":username" => $_POST["username"],
         ":password" => $_POST["password"]
-    ]);
-
-    $user = $response->fetch();
-
-    // fetch renvoie false si il n'y a pas de resultat ou erreur
+    ]); // on execute la requête
+    $user = $query->fetch();
+    var_dump($user);
     if ($user !== false) {
-        //Connexion réussie 
-        //session_start();
-        $_SESSION["username"] = $_POST["username"];
-        var_dump($_SESSION["username"]);
-        header("Location: http://localhost/examphp/admin/index.php");
+        //Verifier le mot de passe
+        if ($_POST["password"] === $user["password"]) {
 
+            $_SESSION["username"] = $_POST["username"];
+            //Redirection
+            header("Location: https://localhost/examphp/admin/index.php");
+        } else {
+            $errors["global"] = "Identifiants invalides";
+        }
     } else {
         $errors["global"] = "Identifiants invalides";
     }
-
-} else {
-    $errors["global"] = "Identifiants manquants";
 }
 
 
-include_once ("block/header.php");
+include_once ("./block/header.php");
+include_once ("./block/navbar.php");
 ?>
 
 <div class="container">
-
     <h1 class="text-center m-3"><?php echo ($title) ?></h1>
 
     <form method="POST" action="login.php">
@@ -59,7 +50,7 @@ include_once ("block/header.php");
         <label for="username">Username</label>
         <input type="text" name="username" id="username" value="jose">
         <label for="password">Password</label>
-        <input type="text" name="password" id="password" value="bove123">
+        <input type="text" name="password" id="password" value="jose123">
 
         <?php
         if (isset($errors["global"])) {
@@ -67,14 +58,21 @@ include_once ("block/header.php");
                 $errors["global"] . "</p>");
         }
         ?>
-
         <input type="submit" value="Valider">
     </form>
 
+    <?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if (isset($_SESSION["username"])) {
+        include_once ("logoutForm.php");
+    }
+    ?>
 </div>
 
 
-
 <?php
-include_once ("block/footer.php");
+include_once ("./block/footer.php");
 ?>

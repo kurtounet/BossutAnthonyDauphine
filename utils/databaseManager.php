@@ -34,6 +34,13 @@ function configPdo(PDO $pdo): void
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 }
 
+function findAllAnnonce(PDO $pdo): array
+{
+    $reponse = $pdo->query('SELECT * FROM annonce ');
+    return $reponse->fetchAll();
+}
+
+
 function findAllAnnonces(PDO $pdo): array
 {
 
