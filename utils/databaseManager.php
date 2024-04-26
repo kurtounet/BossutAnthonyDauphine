@@ -34,12 +34,6 @@ function configPdo(PDO $pdo): void
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 }
 
-function findAllAnnonce(PDO $pdo): array
-{
-    $reponse = $pdo->query('SELECT * FROM annonce ');
-    return $reponse->fetchAll();
-}
-
 function findAllAnnonces(PDO $pdo): array
 {
 
@@ -54,29 +48,31 @@ function findAnnoncesById(PDO $pdo, $id): array
     $reponse->execute($params);
     return $reponse->fetch();
 }
-function createAnnonce($pdo, $imageUrl, $contenu, $titre, $auteur, $datePublication)
+function createAnnonce($pdo, $imageUrl, $contenu, $titre, $auteur)
 {
+
+    date_default_timezone_set('Europe/Paris');
     $params = [
         ':imageUrl' => $imageUrl,
         ':contenu' => $contenu,
         ':titre' => $titre,
         ':auteur' => $auteur,
-        ':datePublication' => $datePublication
+        ':datePublication' => date_create('now')->format('Y-m-d H:i:s')
     ];
     $stmt = $pdo->prepare("INSERT INTO annonce (imageUrl, contenu, titre, auteur, datePublication) VALUES (:imageUrl, :contenu, :titre, :auteur, :datePublication)");
     $stmt->execute($params);
 }
 
-function updateAnnonce($pdo, $id, $imageUrl, $contenu, $titre, $auteur, $datePublication)
+function updateAnnonce($pdo, $id, $imageUrl, $contenu, $titre, $auteur)
 {
-    echo "Modification d'une annonce";
+    date_default_timezone_set('Europe/Paris');
     $params = [
         ':id' => $id,
         ':imageUrl' => $imageUrl,
         ':contenu' => $contenu,
         ':titre' => $titre,
         ':auteur' => $auteur,
-        ':datePublication' => $datePublication
+        ':datePublication' => date_create('now')->format('Y-m-d H:i:s')
     ];
     $stmt = $pdo->prepare("UPDATE annonce SET imageUrl = :imageUrl, contenu = :contenu, titre = :titre, auteur = :auteur, datePublication = :datePublication WHERE id = :id");
     $stmt->execute($params);

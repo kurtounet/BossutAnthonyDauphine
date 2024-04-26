@@ -9,7 +9,7 @@ include_once ("block/header.php");
 
 $pdo = connectDB();
 
-$annonces = findAllAnnonce($pdo);
+$annonces = findAllAnnonces($pdo);
 /*
 $passHash = password_hash("jose123", PASSWORD_DEFAULT);
 echo ($passHash);
