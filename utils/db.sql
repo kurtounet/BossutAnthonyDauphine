@@ -31,7 +31,18 @@ CREATE TABLE IF NOT EXISTS `annonce` (
   UNIQUE KEY `annonce_id_uindex` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table dauphineexam.annonce : ~10 rows (environ)
+INSERT INTO `annonce` (`id`, `imageUrl`, `contenu`, `titre`, `auteur`, `datePublication`) VALUES
+	(1, 'https://placehold.co/400', 'Le dernier rapport sur le climat indique une augmentation alarmante des températures globales.', 'Urgence Climatique', 'Émilie Durand', '2024-04-25 08:00:00'),
+	(2, 'https://placehold.co/400', 'Les autorités locales annoncent un nouveau plan pour améliorer les transports publics.', 'Nouveau Plan de Transport', 'Julien Martin', '2024-04-25 09:30:00'),
+	(3, 'https://placehold.co/400', 'Une nouvelle étude montre les bienfaits de l\'alimentation bio sur la santé.', 'Bienfaits de l\'Alimentation Bio', 'Sophie Bernard', '2024-04-25 11:00:00'),
+	(4, 'https://placehold.co/400', 'Le gouvernement propose un nouveau projet de loi pour la protection des données personnelles.', 'Protection des Données', 'Lucas Petit', '2024-04-25 13:00:00'),
+	(5, 'https://placehold.co/400', 'Découverte scientifique majeure: des chercheurs ont identifié un possible traitement pour la maladie d\'Alzheimer.', 'Avancée dans le Traitement d\'Alzheimer', 'Clara Robert', '2024-04-25 14:30:00'),
+	(6, 'https://placehold.co/400', 'Le festival de musique revient cette année avec des mesures de sécurité renforcées.', 'Retour du Festival de Musique', 'Thomas Richard', '2024-04-25 16:00:00'),
+	(7, 'https://placehold.co/400', 'L\'équipe nationale se prépare pour les prochains championnats du monde de football.', 'Préparation pour le Mondial', 'Marie Dubois', '2024-04-26 08:00:00'),
+	(8, 'https://placehold.co/400', 'Les marchés financiers en hausse suite à l\'annonce des nouvelles réformes économiques.', 'Réformes Économiques et Marchés', 'Alexandre Moreau', '2024-04-26 09:00:00'),
+	(9, 'https://placehold.co/400', 'Un nouveau parc naturel est inauguré pour promouvoir la biodiversité et la conservation.', 'Inauguration d\'un Parc Naturel', 'Camille Lefebvre', '2024-04-26 10:30:00'),
+	(10, 'https://placehold.co/400', 'Les écoles locales introduisent des programmes de soutien pour les élèves avec des besoins spéciaux.', 'Soutien aux Élèves Spéciaux', 'Louis Girard', '2024-04-26 12:00:00');
 
 -- Listage de la structure de table dauphineexam. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
@@ -45,7 +56,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   UNIQUE KEY `utilisateur_login_uindex` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table dauphineexam.utilisateur : ~1 rows (environ)
+INSERT INTO `utilisateur` (`id`, `username`, `nom`, `prenom`, `password`) VALUES
+	(1, 'jose', 'Bové', 'Jose', '$2y$10$049yMQkSO3Jo3W4mMPYV7.Nuv9PUYEhG7tRnRnJQM7qHDyYlEyafu');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
