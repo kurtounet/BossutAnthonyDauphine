@@ -1,4 +1,6 @@
 <?php
+/*
+'http://localhost/SimoneauHugoDauphine/img/' . basename($_FILES['imageUrl']['name'])*/
 $title = "Dauphine";
 
 include_once("../block/header.php");
@@ -53,13 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <label for="imageUrl" class="form-label">Image URL:</label>
             <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="<?PHP echo $annonce["imageUrl"] ?? "" ?>" required>
-
+            <input type="file" name="image">
         </div>
         <div>
-            <form name="upload" method="post" action="connect.php" enctype="multipart/form-data">
-                <input type="file" name="avatar">
-                <input type="submit">
-            </form>
+
         </div>
         <div class="mb-3">
             <label for="contenu" class="form-label">Contenu:</label>

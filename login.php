@@ -12,7 +12,7 @@ if (isset($_SESSION["username"])) {
 }*/
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["username"], $_POST["password"])) {
     $pdo = connectDB();
-    var_dump($_POST["username"], $_POST["password"]);
+    // var_dump($_POST["username"], $_POST["password"]);
     $query = $pdo->prepare("SELECT username, password FROM utilisateur WHERE username = :username");
     $query->execute([":username" => $_POST["username"]]);
     $user = $query->fetch();
