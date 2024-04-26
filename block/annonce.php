@@ -1,7 +1,10 @@
-<div class="col-2 border border-primary border-2 rounded h-25">
-    <h3><?php echo ($annonce["titre"]) ?></h3>
-    <img src="<?php echo ($annonce["imageUrl"]) ?>" class="img-fluid">
-    <P><?php echo ($annonce["contenu"]) ?></P>
-    <p>Auteur :<?php echo ($annonce["auteur"]) ?></p>
-    <p>Date de publication : <?php echo ($annonce["datePublication"]) ?></p>
+<div class="card" style="width: 18rem;">
+    <img src="<?php echo ($annonce["imageUrl"]) ?>" class="card-img-top" alt="<?php echo ($annonce["titre"]) ?>">
+    <div class="card-body">
+        <h5 class="card-title"><?php echo ($annonce["titre"]) ?></h5>
+        <p class="card-text"><?php echo ($annonce["contenu"]) ?></p>
+        <p class="card-text">Auteur :<?php echo ($annonce["auteur"]) ?></p>
+        <p class="card-text">Date de publication : <?php echo ($annonce["datePublication"]) ?></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
 </div>

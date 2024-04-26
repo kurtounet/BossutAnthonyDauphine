@@ -40,7 +40,6 @@ function findAllAnnonce(PDO $pdo): array
     return $reponse->fetchAll();
 }
 
-
 function findAllAnnonces(PDO $pdo): array
 {
 
@@ -68,11 +67,9 @@ function createAnnonce($pdo, $imageUrl, $contenu, $titre, $auteur, $datePublicat
     $stmt->execute($params);
 }
 
-
-
-
 function updateAnnonce($pdo, $id, $imageUrl, $contenu, $titre, $auteur, $datePublication)
 {
+    echo "Modification d'une annonce";
     $params = [
         ':id' => $id,
         ':imageUrl' => $imageUrl,
@@ -87,49 +84,8 @@ function updateAnnonce($pdo, $id, $imageUrl, $contenu, $titre, $auteur, $datePub
 
 function deleteAnnonce($pdo, $id)
 {
+
     $params = [':id' => $id];
     $stmt = $pdo->prepare("DELETE FROM annonce WHERE id = :id");
-    $stmt->execute($params);
-}
-
-### PHP Functions for `utilisateur` Table
-
-function createUser($pdo, $username, $nom, $prenom, $password)
-{
-    $params = [
-        ':username' => $username,
-        ':nom' => $nom,
-        ':prenom' => $prenom,
-        ':password' => password_hash($password, PASSWORD_DEFAULT) // Hash the password
-    ];
-    $stmt = $pdo->prepare("INSERT INTO utilisateur (username, nom, prenom, password) VALUES (:username, :nom, :prenom, :password)");
-    $stmt->execute($params);
-}
-
-function readUser($pdo, $id)
-{
-    $params = [':id' => $id];
-    $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE id = :id");
-    $stmt->execute($params);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-function updateUser($pdo, $id, $username, $nom, $prenom, $password)
-{
-    $params = [
-        ':id' => $id,
-        ':username' => $username,
-        ':nom' => $nom,
-        ':prenom' => $prenom,
-        ':password' => password_hash($password, PASSWORD_DEFAULT)
-    ];
-    $stmt = $pdo->prepare("UPDATE utilisateur SET username = :username, nom = :nom, prenom = :prenom, password = :password WHERE id = :id");
-    $stmt->execute($params);
-}
-
-function deleteUser($pdo, $id)
-{
-    $params = [':id' => $id];
-    $stmt = $pdo->prepare("DELETE FROM utilisateur WHERE id = :id");
     $stmt->execute($params);
 }
