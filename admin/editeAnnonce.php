@@ -1,15 +1,16 @@
 <?php
+//On active la session
 session_start();
-//var_dump($_SESSION);
-//var_dump($_POST);
-//var_dump($_FILES);
+//On vérifie si l'utilisateur est connecté, sinon on le redirige vers la page de login
 if (!isset($_SESSION["username"])) {
     header("Location: https://localhost/bossutanthonydauphine/login.php");
 }
 $title = "Dauphine";
-
+//On inclut le header
 include_once ("../block/header.php");
+//On inclut le databaseManager
 include_once ("../utils/databaseManager.php");
+//On inclut le uploadfile
 include_once ("../utils/uploadfile.php");
 
 // vérifier si l'id existe
@@ -19,28 +20,37 @@ if (!isset($_GET["id"])) {
 } else {
     $subtitle = "Modification de l'annonce";
     $para = "?id=" . $_GET["id"];
+    //On se connecte a la base de donnée
     $pdo = connectDB();
+    //On recupere l'annonce
     $annonce = findAnnoncesById($pdo, $_GET["id"]);
 }
 
-
+//On verifie si le formulaire est envoyé
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-
+    //On verifie si $_FILES["avatar"]["name"] existe (fichier sélectionné) et 
+    //si la variable name n'est pas vide
     if (isset($_FILES["avatar"]["name"]) && !empty($_FILES["avatar"]["name"])) {
+        //Si c'est le cas, on appel la fonction uploadFile, qui télécharge le fichier et 
+        // returne l'url de l'image, puis on affecte cette url a $_POST["imageUrl"]
         $_POST["imageUrl"] = uploadFile();
-        //var_dump($_POST["imageUrl"]);
+
     }
-
+    //On se connecte à la base de donnée
     $pdo = connectDB();
+    //On verifie si les variables existent 
     if (isset($_POST["imageUrl"], $_POST["contenu"], $_POST["titre"], $_POST["auteur"])) {
-
+        //Si $_GET["id"] existe, on appel la fonction updateAnnonce pour modifier l'annonce, 
+        //sinon on appel la fonction createAnnonce, qui permet d'ajouter une nouvelle annonce
         if (!isset($_GET["id"])) {
             createAnnonce($pdo, $_POST["imageUrl"], $_POST["contenu"], $_POST["titre"], $_POST["auteur"]);
         } else {
             updateAnnonce($pdo, $_GET["id"], $_POST["imageUrl"], $_POST["contenu"], $_POST["titre"], $_POST["auteur"]);
         }
-
+        header("Location: https://localhost/bossutanthonydauphine/admin/index.php");
+    } else {
+        //En cas d'erreur, on redirige vers /admin/index.php
         header("Location: https://localhost/bossutanthonydauphine/admin/index.php");
     }
 }

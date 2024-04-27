@@ -1,12 +1,12 @@
 <?php
 
-// 1 active l'affichage des erreurs
-// 0 désactive l'affichage des erreurs
-ini_set('display_errors', 1);//erreurs générées pendant l'exécution du script PHP
-ini_set('display_startup_errors', 1);//erreurs qui se produisent au démarrage de PHP.
+// 1 active l'affichage des erreurs ou 0 désactive l'affichage des erreurs
+// pour eviter qu'un petit malin, est des infos sur les debugs.
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
 
-$localhost = "https://localhost/bossutanthonydauphine/";
+
 $title = "Dauphine";
 ?>
 <!DOCTYPE html>

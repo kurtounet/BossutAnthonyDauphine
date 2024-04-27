@@ -6,6 +6,7 @@
             </li>
 
             <?PHP
+            //On affiche le lien de l'admin si l'utilisateur est connecté
             if (isset($_SESSION["username"])) {
                 echo ' 
                 <li class="nav-item">

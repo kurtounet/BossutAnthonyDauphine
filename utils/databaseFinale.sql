@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Listage de la structure de la base pour dauphineexam
-CREATE DATABASE IF NOT EXISTS `dauphineexam` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `dauphineexam`;
+-- Listage de la structure de la base pour dauphineexamor
+CREATE DATABASE IF NOT EXISTS `dauphineexamor` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `dauphineexamor`;
 
--- Listage de la structure de table dauphineexam. annonce
+-- Listage de la structure de table dauphineexamor. annonce
 CREATE TABLE IF NOT EXISTS `annonce` (
   `id` int NOT NULL AUTO_INCREMENT,
   `imageUrl` varchar(250) DEFAULT NULL,
@@ -29,37 +29,17 @@ CREATE TABLE IF NOT EXISTS `annonce` (
   `datePublication` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `annonce_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table dauphineexam.annonce : ~23 rows (environ)
+-- Listage des données de la table dauphineexamor.annonce : ~5 rows (environ)
 INSERT INTO `annonce` (`id`, `imageUrl`, `contenu`, `titre`, `auteur`, `datePublication`) VALUES
-	(13, 'https://placehold.co/401', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fugit aliquid aliquam laboriosam, nulla ea reprehenderit pariatur, eligendi nesciunt non quasi? Repellendus maxime, eos eius saepe consequatur ipsum nulla dolores.', 'Nouvelle annonce 1', 'Clara Robert', '2024-04-26 19:07:32'),
-	(15, 'https://placehold.co/401', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fugit aliquid aliquam laboriosam, nulla ea reprehenderit pariatur, eligendi nesciunt non quasi? Repellendus maxime, eos eius saepe consequatur ipsum nulla dolores.', 'Nouvelle annonce 3', 'Louis Girard', '2024-04-26 19:08:25'),
-	(16, 'https://placehold.co/401', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fugit aliquid aliquam laboriosam, nulla ea reprehenderit pariatur, eligendi nesciunt non quasi? Repellendus maxime, eos eius saepe consequatur ipsum nulla dolores.', 'Nouvelle annonce 2', 'Julien Martin', '2024-04-26 19:08:52'),
-	(17, 'https://placehold.co/400', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fugit aliquid aliquam laboriosam, nulla ea reprehenderit pariatur, eligendi nesciunt non quasi? Repellendus maxime, eos eius saepe consequatur ipsum nulla dolores.', 'Nouvelle annonce 4', 'Sophie Bernard', '2024-04-26 19:11:05'),
-	(18, 'https://placehold.co/400', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fugit aliquid aliquam laboriosam, nulla ea reprehenderit pariatur, eligendi nesciunt non quasi? Repellendus maxime, eos eius saepe consequatur ipsum nulla dolores.', ' Nouvelle annonce 6', 'Louis Girard', '2024-04-26 19:11:49'),
-	(19, 'https://placehold.co/400', 'Le dernier rapport sur le climat indique une augmentation alarmante des températures globales.3', 'Urgence Climatique 123', 'Émilie Durand3', '2024-04-26 20:16:50'),
-	(21, 'https://placehold.co/400', 'Les autorités locales annoncent un nouveau plan pour améliorer les transports publics.', 'Nouveau Plan de Transport', 'Julien Martin', '2024-04-25 09:30:00'),
-	(23, 'https://placehold.co/400', 'Le gouvernement propose un nouveau projet de loi pour la protection des données personnelles.', 'Protection des Données', 'Lucas Petit', '2024-04-25 13:00:00'),
-	(24, 'https://placehold.co/400', 'Découverte scientifique majeure: des chercheurs ont identifié un possible traitement pour la maladie d\'Alzheimer.', 'Avancée dans le Traitement d\'Alzheimer', 'Clara Robert', '2024-04-25 14:30:00'),
-	(25, 'https://placehold.co/400', 'Le festival de musique revient cette année avec des mesures de sécurité renforcées.', 'Retour du Festival de Musique', 'Thomas Richard', '2024-04-25 16:00:00'),
-	(26, 'https://placehold.co/400', 'L\'équipe nationale se prépare pour les prochains championnats du monde de football.', 'Préparation pour le Mondial', 'Marie Dubois', '2024-04-26 08:00:00'),
-	(27, 'https://placehold.co/400', 'Les marchés financiers en hausse suite à l\'annonce des nouvelles réformes économiques.', 'Réformes Économiques et Marchés', 'Alexandre Moreau', '2024-04-26 09:00:00'),
-	(28, 'https://placehold.co/400', 'Un nouveau parc naturel est inauguré pour promouvoir la biodiversité et la conservation.', 'Inauguration d\'un Parc Naturel', 'Camille Lefebvre', '2024-04-26 10:30:00'),
-	(29, 'https://placehold.co/400', 'Les écoles locales introduisent des programmes de soutien pour les élèves avec des besoins spéciaux.', 'Soutien aux Élèves Spéciaux', 'Louis Girard', '2024-04-26 12:00:00'),
-	(31, 'https://placehold.co/400', 'Le dernier rapport sur le climat indique une augmentation alarmante des températures globales.3', 'Urgence Climatique 123', 'Émilie Durand3', '2024-04-26 20:17:09'),
-	(32, 'https://placehold.co/400', 'Le dernier rapport sur le climat indique une augmentation alarmante des températures globales.3', 'Urgence Climatique 123', 'Émilie Durand3', '2024-04-26 20:18:22'),
-	(33, 'https://placehold.co/400', 'Le dernier rapport sur le climat indique une augmentation alarmante des températures globales.3', 'Urgence Climatique 123', 'Émilie Durand3', '2024-04-26 20:20:03'),
-	(34, 'https://placehold.co/400', 'Nouvelle annonce avatar', 'Nouvelle annonce avatar', 'avatar', '2024-04-26 20:20:41'),
-	(35, 'https://placehold.co/400', 'Nouvelle annonce image', 'Nouvelle annonce  image', 'Nouvelle annonce image', '2024-04-26 20:26:55'),
-	(36, 'https://placehold.co/400', 'Nouvelle annonce image', 'Nouvelle annonce  image', 'Nouvelle annonce image', '2024-04-26 20:27:10'),
-	(37, 'https://localhost/bossutanthonydauphine/assets/uploads/lotus.png', 'Nouvelle annonce chat', 'Nouvelle annonce  chat', 'chat', '2024-04-26 20:57:48'),
-	(38, 'https://localhost/bossutanthonydauphine/assets/uploads/angular.png', 'Nouvelle annonce angular', 'Nouvelle annonce angular', 'angular', '2024-04-26 20:46:43'),
-	(39, 'https://localhost/bossutanthonydauphine/assets/uploads/angular.png', 'Nouvelle annonce angular', 'Nouvelle annonce angular', 'angular', '2024-04-26 20:46:58'),
-	(42, 'https://localhost/bossutanthonydauphine/assets/uploads/oiseau.png', 'Test fonction uploadfile', 'Test fonction uploadfile', 'Test fonction uploadfile', '2024-04-26 22:47:47'),
-	(43, 'https://localhost/bossutanthonydauphine/assets/uploads/lotus.png', 'Test fonction uploadfile', 'Test fonction uploadfile', 'Test fonction uploadfile', '2024-04-26 22:47:32');
+	(54, 'https://localhost/bossutanthonydauphine/assets/uploads/lotus.png', 'Nouvelle annonce placeholder image', 'Nouvelle annonce placeholder image 9:25 -> Modifier à 9:39 ', 'placeholder', '2024-04-27 11:36:10'),
+	(57, 'https://localhost/bossutanthonydauphine/assets/uploads/lotus.png', 'Nouvelle annonce -> Modification image + titre + contenu + auteur', 'Nouvelle annonce -> Modification image + titre + contenu + auteur 2', 'Lotus', '2024-04-27 09:32:53'),
+	(58, 'https://localhost/bossutanthonydauphine/assets/uploads/oiseau.png', 'Nouvelle annonce lotus -> Modification image + titre + contenu + auteur ->oiseau', 'Nouvelle annonce lotus -> Modification image + titre + contenu + auteur ->oiseau', 'auteur ->oiseau', '2024-04-27 09:35:56'),
+	(59, 'https://placehold.co/400', 'Nouvelle annonce : date  27/04/24 9:36', 'Nouvelle annonce : date 27/04/24 9:37 -> modifier à  9:37', 'Anthony', '2024-04-27 09:38:43'),
+	(60, 'https://localhost/bossutanthonydauphine/assets/uploads/oiseau.png', 'Ma Nouvelle annonce placehold -> oiseau', 'Ma Nouvelle annonce placehold -> Modif tout ', 'Moi -> oiseau', '2024-04-27 12:36:09');
 
--- Listage de la structure de table dauphineexam. utilisateur
+-- Listage de la structure de table dauphineexamor. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(250) NOT NULL,
@@ -71,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   UNIQUE KEY `utilisateur_login_uindex` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table dauphineexam.utilisateur : ~0 rows (environ)
+-- Listage des données de la table dauphineexamor.utilisateur : ~0 rows (environ)
 INSERT INTO `utilisateur` (`id`, `username`, `nom`, `prenom`, `password`) VALUES
 	(1, 'jose', 'Bové', 'Jose', '$2y$10$049yMQkSO3Jo3W4mMPYV7.Nuv9PUYEhG7tRnRnJQM7qHDyYlEyafu');
 

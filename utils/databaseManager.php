@@ -17,11 +17,7 @@ function connectDB(): PDO
         return $pdo;
     } catch (Exception $e) {
 
-        //Lancer l'erreur
-        //throw $e;
-
         echo ("Erreur à la connexion: " . $e->getMessage());
-
         exit();
     }
 }
@@ -36,13 +32,11 @@ function configPdo(PDO $pdo): void
 
 function findAllAnnonces(PDO $pdo): array
 {
-
     $reponse = $pdo->query("SELECT * FROM annonce ORDER BY datePublication DESC");
     return $reponse->fetchAll();
 }
 function findAnnoncesById(PDO $pdo, $id): array
 {
-
     $params = [':id' => $id];
     $reponse = $pdo->prepare("SELECT * FROM annonce WHERE id = :id");
     $reponse->execute($params);
@@ -50,7 +44,6 @@ function findAnnoncesById(PDO $pdo, $id): array
 }
 function createAnnonce($pdo, $imageUrl, $contenu, $titre, $auteur)
 {
-
     date_default_timezone_set('Europe/Paris');
     $params = [
         ':imageUrl' => $imageUrl,
@@ -80,7 +73,6 @@ function updateAnnonce($pdo, $id, $imageUrl, $contenu, $titre, $auteur)
 
 function deleteAnnonce($pdo, $id)
 {
-
     $params = [':id' => $id];
     $stmt = $pdo->prepare("DELETE FROM annonce WHERE id = :id");
     $stmt->execute($params);

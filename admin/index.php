@@ -1,13 +1,20 @@
 <?php
+//On active la session
 session_start();
+//On vérifie si l'utilisateur est connecté, sinon on le redirige vers la page de login
 if (!isset($_SESSION["username"])) {
     header("Location: https://localhost/bossutanthonydauphine/login.php");
 }
 $title = "Admin";
-require_once ("../utils/databaseManager.php");
+//On inclut le header
 include_once ("../block/header.php");
+//On inclut le databaseManager
+require_once ("../utils/databaseManager.php");
+//On se connecte a la base de donnée
 $pdo = connectDB();
+//On recupere toutes les annonces
 $annonces = findAllAnnonces($pdo);
+//On compte le nombre d'annonces
 $nbannonces = count($annonces);
 ?>
 
@@ -20,6 +27,7 @@ $nbannonces = count($annonces);
     <h3>Nombre d'annonces : <?php echo ($nbannonces) ?></h3>
     <div class="d-flex justify-content-evenly align-items-center flex-wrap gap-2">
         <?php
+        //On affiche les annonces
         foreach ($annonces as $annonce) {
             ?>
             <div class="row border border-primary border-2 rounded p-2 " style="height: 10%; width: 100%;">
