@@ -2,8 +2,8 @@
 
 // 1 active l'affichage des erreurs ou 0 désactive l'affichage des erreurs
 // pour eviter qu'un petit malin, est des infos sur les debugs.
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 
 
 
