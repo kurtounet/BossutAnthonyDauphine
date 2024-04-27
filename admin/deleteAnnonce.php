@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-if (isset($_SESSION["username"]) === false) {
+if (!isset($_SESSION["username"])) {
     header("Location: https://localhost/bossutanthonydauphine/login.php");
 }
 require_once ("../utils/databaseManager.php");

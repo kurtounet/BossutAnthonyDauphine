@@ -1,14 +1,9 @@
 <?php
-require_once ("utils/databaseManager.php");
 $title = "Dauphine";
 include_once ("block/header.php");
-
-
-
-
+require_once ("utils/databaseManager.php");
 
 $pdo = connectDB();
-
 $annonces = findAllAnnonces($pdo);
 /*
 $passHash = password_hash("jose123", PASSWORD_DEFAULT);
