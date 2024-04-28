@@ -1,20 +1,14 @@
 <?php
-require_once ("utils/databaseManager.php");
 $title = "Dauphine";
+//On inclut le header
 include_once ("block/header.php");
-
-
-
-
-
+//On inclut le databaseManager
+require_once ("utils/databaseManager.php");
+//On se connecte a la base de donnée
 $pdo = connectDB();
+//On récupère toutes les annonces
+$annonces = findAllAnnonces($pdo);
 
-$annonces = findAllAnnonce($pdo);
-/*
-$passHash = password_hash("jose123", PASSWORD_DEFAULT);
-echo ($passHash);
-var_dump(password_verify("jose123", $passHash));
-*/
 ?>
 
 <div class="container">
@@ -22,6 +16,7 @@ var_dump(password_verify("jose123", $passHash));
 
     <div class="d-flex justify-content-evenly align-items-center flex-wrap gap-3">
         <?php
+        //On affiche les annonces
         foreach ($annonces as $annonce) {
             include ("block/annonce.php");
         }
