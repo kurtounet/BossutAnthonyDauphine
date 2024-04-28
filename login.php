@@ -56,6 +56,7 @@ include_once ("block/navbar.php");
         <input type="submit" class="btn btn-primary"></input>
     </form>
 
+
     <?php
     if (isset($_SESSION["username"])) {
         include_once ("logoutForm.php");
