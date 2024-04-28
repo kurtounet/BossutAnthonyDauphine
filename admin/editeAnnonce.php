@@ -1,11 +1,10 @@
 <?php
-/*
-'http://localhost/SimoneauHugoDauphine/img/' . basename($_FILES['imageUrl']['name'])*/
+/* 'http://localhost/SimoneauHugoDauphine/img/' . basename($_FILES['image']['name'])*/
 $title = "Dauphine";
 
 include_once("../block/header.php");
 include_once("../utils/databaseManager.php");
-
+$image = $_FILE["image"]["name"];
 if (!isset($_GET["id"])) {
     $subtitle = "Nouvelle annonce";
     $para = "";
@@ -16,7 +15,7 @@ if (!isset($_GET["id"])) {
     $annonce = findAnnoncesById($pdo, $_GET["id"]);
     //var_dump($annonce);
 }
-var_dump($_SERVER["REQUEST_METHOD"]);
+//var_dump($_SERVER["REQUEST_METHOD"]);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pdo = connectDB();
     if (isset($_POST["imageUrl"], $_POST["contenu"], $_POST["titre"], $_POST["auteur"], $_POST["datePublication"])) {

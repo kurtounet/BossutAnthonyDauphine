@@ -32,20 +32,24 @@ include_once("block/navbar.php");
 <div class="container">
     <h1 class="text-center m-3"><?php echo $title; ?></h1>
 
-    <form method="POST" action="login.php">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="jose">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" value="jose123">
+    <form method="POST" action="login.php" class="form-group col-6">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" id="username" value="jose" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" value="jose123" class="form-control">
+        </div>
 
         <?php
         if (isset($errors["global"])) {
-            echo ("<p class='text-danger'>" .
-                $errors["global"] . "</p>");
+            echo ("<p class='text-danger'>" . $errors["global"] . "</p>");
         }
         ?>
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" class="btn btn-primary">
     </form>
+
 
     <?php
     if (isset($_SESSION["username"])) {
